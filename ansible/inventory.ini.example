@@ -1,0 +1,6 @@
+[docker_hosts]
+hp-node ansible_host=hp-node.lan ansible_user=chance
+nas-node ansible_host=nas-node.lan ansible_user=chance
+
+[docker_hosts:vars]
+ansible_python_interpreter=/usr/bin/python3

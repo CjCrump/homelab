@@ -1,0 +1,37 @@
+---
+# Bootstraps a fresh Ubuntu Server host into a ready Docker services node.
+# Usage:
+#   cp inventory.ini.example inventory.ini   # edit hostnames/users
+#   ansible-playbook -i inventory.ini bootstrap.yml
+
+- name: Bootstrap Docker services host
+  hosts: docker_hosts
+  become: true
+
+  roles:
+    - docker
+
+  tasks:
+    - name: Create app directory for compose stacks
+      file:
+        path: /opt/services
+        state: directory
+        owner: "{{ ansible_user }}"
+        mode: "0755"
+
+    - name: Copy compose files to host
+      copy:
+        src: "../compose/{{ item }}"
+        dest: "/opt/services/{{ item }}"
+      loop:
+        - vaultwarden.yml
+        - gitea.yml
+        - caddy.yml
+        - Caddyfile
+        - teamspeak.yml
+
+    - name: Note on secrets
+      debug:
+        msg: >
+          Compose files copied. Nextcloud stack requires a populated .env
+          (see compose/.env.example) — deploy separately once secrets are set.
