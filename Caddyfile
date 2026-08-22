@@ -1,0 +1,14 @@
+{
+	local_certs
+	auto_https disable_redirects
+}
+
+vault.lan:8443 {
+	tls internal
+	reverse_proxy vaultwarden:80
+}
+
+gitea.lan:8443 {
+	tls internal
+	reverse_proxy gitea:3000
+}

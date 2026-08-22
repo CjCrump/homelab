@@ -1,0 +1,14 @@
+# Secrets / env
+.env
+*.env
+!*.env.example
+
+# Compose volume data (never commit actual data)
+compose/**/data/
+compose/**/db/
+compose/**/app/
+compose/**/config/
+
+# OS/editor cruft
+.DS_Store
+*.swp

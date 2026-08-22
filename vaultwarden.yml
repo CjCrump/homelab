@@ -1,0 +1,13 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: "https://vault.lan"
+      SIGNUPS_ALLOWED: "false"      # invite-only; admin adds users manually
+      WEBSOCKET_ENABLED: "true"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./data:/data
