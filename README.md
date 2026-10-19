@@ -1,3 +1,5 @@
+> Status (Oct 18, 2026): hp-node is retired. Services moved to nas-node. Docs are being updated.
+
 # Homelab Infrastructure
 
 Self-hosted infrastructure for family services, dev workflows, and game servers, built and maintained solo.
